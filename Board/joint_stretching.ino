@@ -6,10 +6,10 @@
 void Start() {
   ui.Init();
   ui.splashScreen();
-  sens.Init();
   sens.setCalibrationVal(696.0);
   sens.setStabilizingTime(2000);
   sens.setTare(true);
+  sens.Init();
 }
 
 void setup() {
@@ -17,6 +17,7 @@ void setup() {
 }
 
 void loop() {
+  sys.Handler();
   ui.Handler();
   sens.Handler();
 }
