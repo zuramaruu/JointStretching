@@ -2,8 +2,9 @@
 #include "Pins.h"
 #include "Servo.h"
 
-#define ON  180
-#define OFF 0
+#define ON    180
+#define OFF   0
+#define UTIME 0
 
 MainSys sys;
 Servo serv;

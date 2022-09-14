@@ -8,6 +8,8 @@
 #define   RESET     'C'
 #define   SWITCH    '#'
 #define   EMPTY     '\0'
+#define   MAX_INDX   16
+#define   REST_INDX  10
 
 UserInterface ui;
 
@@ -33,7 +35,7 @@ void UserInterface::Handler() {
     if (!cKey) cKey = EMPTY;
     else {
       if (check(cKey)) {
-        if (cursor == 16) reset();
+        if (cursor == MAX_INDX) reset();
         else {
           set(cursor, 0);
           lcd.print(cKey);
@@ -75,7 +77,7 @@ bool UserInterface::getState() {
 void UserInterface::reset() {
   lcd.clear();
   memset(myTxt, 0, sizeof(myTxt));
-  index = 0;
+  index = REST_INDX;
   cursor = 10;
   state = false;
 }
