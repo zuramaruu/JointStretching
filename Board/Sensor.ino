@@ -4,6 +4,8 @@
 #include "EEPROM.h"
 #include "UI.h"
 
+#define S_SAMLPLING 0
+
 Sensor sens;
 
 HX711_ADC LoadCell(HXOUT, HXSCK);
@@ -28,9 +30,9 @@ void Sensor::setTare(bool tare) {
 }
 
 void Sensor::Handler() {
-  if (millis() - sensTmr >= 50 && LoadCell.update()) {
+  if (millis() - sensTmr >= S_SAMLPLING && LoadCell.update()) {
     LoadCellValue = LoadCell.getData();
-
+    if (LoadCellValue < 0) LoadCellValue = 0;
     sensTmr = millis();
   }
 }
@@ -41,5 +43,7 @@ float Sensor::getValue() {
 
 void Sensor::errMsg() {
   Ser.print("Check wiring and pin designations");
+  ui.set(3, 0);
+  ui.print("ERROR");
   while (1);
 }
