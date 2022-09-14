@@ -1,9 +1,7 @@
 #pragma once
 
-#define BAUDRATE 9600
-#define Ser Serial
-
-#define SPLSHTIME 1000
+#define   BAUDRATE  9600
+#define   Ser       Serial
 
 struct UserInterface {
     void Init();

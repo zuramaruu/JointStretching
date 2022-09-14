@@ -4,6 +4,11 @@
 #include "Keypad_I2C.h"
 #include "Keypad.h"
 
+#define   SPLSHTIME 1000
+#define   RESET     'C'
+#define   SWITCH    '#'
+#define   EMPTY     '\0'
+
 UserInterface ui;
 
 LiquidCrystal_I2C lcd(LCDADDR, 16, 2);
@@ -25,7 +30,7 @@ void UserInterface::Handler() {
 
     cKey = thisKey.getKey();
 
-    if (!cKey) cKey = '\0';
+    if (!cKey) cKey = EMPTY;
     else {
       if (check(cKey)) {
         if (cursor == 16) reset();
@@ -39,12 +44,12 @@ void UserInterface::Handler() {
 
         }
       } else {
-        if (cKey == 'C') reset();
+        if (cKey == RESET) reset();
       }
     }
 
-    if (cKey == '#' and not state) state = 1;
-    else if (cKey == '#' and state) state = 0;
+    if (cKey == SWITCH and not state) state = 1;
+    else if (cKey == SWITCH and state) state = 0;
 
     uiTmr = millis();
   }
