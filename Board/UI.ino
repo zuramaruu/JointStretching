@@ -10,6 +10,7 @@
 #define   EMPTY     '\0'
 #define   MAX_INDX   16
 #define   REST_INDX  10
+#define   INT_INDX   0
 
 UserInterface ui;
 
@@ -56,7 +57,7 @@ void UserInterface::Handler() {
     uiTmr = millis();
   }
 
-  if (millis() - displayTmr >= 1000) {
+  if (millis() - displayTmr >= 500) {
     set(0, 1);
     print("ActualVal:");
     set(10, 1);
@@ -77,8 +78,8 @@ bool UserInterface::getState() {
 void UserInterface::reset() {
   lcd.clear();
   memset(myTxt, 0, sizeof(myTxt));
-  index = REST_INDX;
-  cursor = 10;
+  index = INT_INDX;
+  cursor = REST_INDX;
   state = false;
 }
 
