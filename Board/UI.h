@@ -7,9 +7,10 @@ struct UserInterface {
     void Init();
     void Handler();
     void splashScreen();
-    int getSetPoint();
+    String getSetPoint();
     bool getState();
 
+    void reset();
     void set(uint8_t x, uint8_t y);
     void print(const char *txt);
 
@@ -18,7 +19,7 @@ struct UserInterface {
     char myTxt[10];
     bool state = false;
     uint16_t cursor = 10;
-    void reset();
+
     uint8_t index = 0;
     bool check(char key);
     uint32_t uiTmr;

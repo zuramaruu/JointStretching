@@ -32,7 +32,7 @@ void Sensor::setTare(bool tare) {
 void Sensor::Handler() {
   if (millis() - sensTmr >= S_SAMLPLING && LoadCell.update()) {
     LoadCellValue = LoadCell.getData();
-    if (LoadCellValue < 0) LoadCellValue = 0;
+    if (LoadCellValue < 10) LoadCellValue = 0;
     sensTmr = millis();
   }
 }

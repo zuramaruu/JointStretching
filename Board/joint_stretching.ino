@@ -6,8 +6,8 @@
 void Start() {
   ui.Init();
   ui.splashScreen();
-  sens.setCalibrationVal(696.0);
-  sens.setStabilizingTime(2000);
+  sens.setCalibrationVal(cfg::CalValue);
+  sens.setStabilizingTime(cfg::Time);
   sens.setTare(true);
   sens.Init();
 }

@@ -4,7 +4,7 @@
 #include "Keypad_I2C.h"
 #include "Keypad.h"
 
-#define   SPLSHTIME 1000
+#define   SPLSHTIME 3000
 #define   RESET     'C'
 #define   SWITCH    '#'
 #define   EMPTY     '\0'
@@ -44,7 +44,6 @@ void UserInterface::Handler() {
 
           cursor++;
           index++;
-
         }
       } else {
         if (cKey == RESET) reset();
@@ -52,7 +51,7 @@ void UserInterface::Handler() {
     }
 
     if (cKey == SWITCH and not state) state = 1;
-    else if (cKey == SWITCH and state) state = 0;
+    //    else if (cKey == SWITCH and state) state = 0;
 
     uiTmr = millis();
   }
@@ -67,8 +66,8 @@ void UserInterface::Handler() {
   }
 }
 
-int UserInterface::getSetPoint() {
-  return int(myTxt);
+String UserInterface::getSetPoint() {
+  return String(myTxt);
 }
 
 bool UserInterface::getState() {
@@ -99,10 +98,10 @@ bool UserInterface::check(char key) {
 }
 
 void UserInterface::splashScreen() {
-  set(3, 0);
-  print("Si Ganteng");
+  set(1, 0);
+  print("Achmad Sanusi");
   set(3, 1);
-  print("SMK Soehat");
+  print("4B D4TE");
 
   delay(SPLSHTIME);
   lcd.clear();

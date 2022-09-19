@@ -2,8 +2,10 @@
 
 #define   HXOUT     12
 #define   HXSCK     13
-#define   PINSERV   10
+#define   PINSERV   9
 #define   INSERV    8
+#define   LED       7
+#define   INTERR    2
 
 #define   ROWS      4
 #define   COLS      4
@@ -18,13 +20,17 @@
 #define   ln3       '3','6','9','#'
 #define   ln4       'A','B','C','D'
 
-namespace pin
-{
+namespace cfg {
+  const float CalValue = 696.0;
+  const uint16_t Time = 2000;
+};
+
+namespace pin {
 
 const byte row[4] = {3, 2, 1, 0};
 const byte col[4] = {7, 6, 5, 4};
 
-char hq[ROWS][COLS] = 
+char hq[ROWS][COLS] =
 {
   { ln1 }, { ln2 },
   { ln3 }, { ln4 }
